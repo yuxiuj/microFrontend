@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <App />,
-  document.getElementById('root')
+  document.getElementById('icestark-container')
 );
 
 // If you want your app to work offline and load faster, you can change
