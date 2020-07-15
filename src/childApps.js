@@ -1,16 +1,16 @@
 // 子应用配置
 export default [
   {
-    path: '/sub1',
+    path: 'sub1',
     assets: {
-      js: ['http://127.0.0.1:9901/index.2e016db5.js'],
+      js: ['http://127.0.0.1:9901/index.js'],
       css: [],
     },
     // 优先级高
     html: ''
   },
   {
-    path: '/sub2',
+    path: 'sub2',
     assets: {
       js: [],
       css: [],
