@@ -15,7 +15,7 @@ const RouteGuard = ({ location }) => {
       const prefix = pathname.split("/")[1];
       const findApp = childApps.find((app) => app.path === prefix);
       const { js } = findApp.assets;
-      fetch("http://127.0.0.1:3333/index.js").then((res) => {
+      fetch("http://0.0.0.0:3333/index.js").then((res) => {
         res.text().then((text) => {
           console.log('text --->', text);
           // eslint-disable-next-line no-eval
