@@ -4,27 +4,26 @@ import "./app.css";
 import { menus } from "./menus";
 import childApps from "./childApps";
 import { Link, BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { setCache, getCache } from "./cache";
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 const RouteGuard = ({ location }) => {
   useEffect(() => {
-    // return history.listen((location) => {
-      const { pathname } = location;
-      const prefix = pathname.split("/")[1];
+    const { pathname } = location;
+    const prefix = pathname.split("/")[1];
+    if (getCache("basePath") !== prefix) {
+      console.log("lllll -->");
+      setCache("basePath", prefix);
       const findApp = childApps.find((app) => app.path === prefix);
       const { js } = findApp.assets;
       fetch("http://0.0.0.0:3333/index.js").then((res) => {
         res.text().then((text) => {
-          console.log('text --->', text);
-          // eslint-disable-next-line no-eval
-          // (0, eval)(text);
-          eval(text);
+          (0, eval)(text);
         });
       });
-    // });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }
   }, []);
   return null;
 };
