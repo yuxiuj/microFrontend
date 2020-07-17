@@ -8,21 +8,22 @@ import { Link, BrowserRouter as Router, Switch, Route } from "react-router-dom";
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
-const RouteGuard = ({ history }) => {
+const RouteGuard = ({ location }) => {
   useEffect(() => {
-    return history.listen((location) => {
+    // return history.listen((location) => {
       const { pathname } = location;
       const prefix = pathname.split("/")[1];
       const findApp = childApps.find((app) => app.path === prefix);
       const { js } = findApp.assets;
-      fetch("http://127.0.0.1:9902/index.js").then((res) => {
+      fetch("http://127.0.0.1:3333/index.js").then((res) => {
         res.text().then((text) => {
           console.log('text --->', text);
           // eslint-disable-next-line no-eval
-          (0, eval)(text);
+          // (0, eval)(text);
+          eval(text);
         });
       });
-    });
+    // });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return null;

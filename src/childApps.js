@@ -3,7 +3,7 @@ export default [
   {
     path: 'sub1',
     assets: {
-      js: ['http://127.0.0.1:9901/index.js'],
+      js: ['http://127.0.0.1:9904/index.js'],
       css: [],
     },
     // 优先级高
